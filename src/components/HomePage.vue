@@ -55,7 +55,7 @@
         <p v-if="showTree" class="showTreeBtnText">Esconder árvore</p>
         <p v-else class="showTreeBtnText">Mostrar árvore</p>
       </b-button>
-      <div class="tree-container">
+      <div class="tree-container" id="arvoreView">
         <tree-chart
           v-if="showTree"
           :data="treeData"
@@ -121,7 +121,11 @@ export default {
               document.getElementById("p-resultado").innerText =
                 resposta.formula + " é uma formula da lógica proposicional";
             } else {
-              this.isFormula = false;             
+              this.isFormula = false;                 
+              this.treeData = null;
+
+              document.getElementById("arvoreView").style.display = 'none';
+
               document.getElementById("img-resultado").src = imagemErrado;
               document.getElementById(
                 "result-modal___BV_modal_title_"
